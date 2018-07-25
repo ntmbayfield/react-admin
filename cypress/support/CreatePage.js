@@ -8,6 +8,7 @@ export default url => ({
         submitAndAddButton:
             ".create-page form>div:last-child button[type='button']",
         descInput: '.ql-editor',
+        tab: index => `.form-tab:nth-of-type(${index})`,
     },
 
     navigate() {
@@ -46,5 +47,9 @@ export default url => ({
         cy.get(this.elements.snackbar);
         cy.get(this.elements.body).click(); // dismiss notification
         cy.wait(200); // let the notification disappear (could block further submits)
+    },
+
+    gotoTab(index) {
+        cy.get(this.elements.tab(index)).click();
     },
 });
